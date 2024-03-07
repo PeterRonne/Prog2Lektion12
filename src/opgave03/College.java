@@ -1,11 +1,13 @@
 package opgave03;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 public class College {
     private String name;
-    private final List<Student> students = new ArrayList<>();
+    private final Set<Student> students = new LinkedHashSet<>();
 
 
     public College(String name) {
