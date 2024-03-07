@@ -38,7 +38,7 @@ class StudentTest {
         //Act
         newStudent.setGroup(Eaaa);
         //Assert
-        assertTrue(Eaaa.getStudents().contains(newStudent));
+        assertTrue(Eaaa.getStudents().containsValue(newStudent));
         assertEquals(Eaaa, newStudent.getCollege());
     }
 

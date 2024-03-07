@@ -32,14 +32,14 @@ class CollegeTest {
     @Test
     void addStudent() {
         // Arrange
-        Student student = new Student(1,"Simon" , null);
+        Student student = new Student(4,"Simon" , null);
         int expected = Eaaa.getStudents().size() + 1;
+
         //Act
         Eaaa.addStudent(student);
         int actual = Eaaa.getStudents().size();
-
         //Assert
-        assertTrue(Eaaa.getStudents().contains(student));
+        assertTrue(Eaaa.getStudents().containsValue(student));
         assertEquals(expected, actual);
         assertEquals(Eaaa, student.getCollege());
 
@@ -52,10 +52,11 @@ class CollegeTest {
         // Arrange
         College Eaaa = new College("Eaaa");
         Student student = new Student(1, "Jens", Eaaa);
+
         // Act
         Eaaa.removeStudent(student);
         // Assert
-        assertFalse(Eaaa.getStudents().contains(student));
+        assertFalse(Eaaa.getStudents().containsValue(student));
         assertEquals(null, student.getCollege());
     }
 
@@ -64,7 +65,7 @@ class CollegeTest {
         //Arrange
         double expected = 6.166;
         //Act
-        double actual = Eaaa.calcAvg();
+        double actual = Eaaa.calculateAvg();
         //Assert
         assertEquals(expected,actual, 0.001);
     }
@@ -78,5 +79,7 @@ class CollegeTest {
         Student student = Eaaa.findStudent(4);
         // Assert
         assertEquals(magnus, student);
+
+        Eaaa.removeStudent(magnus);
     }
 }

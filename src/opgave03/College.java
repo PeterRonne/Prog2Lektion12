@@ -1,13 +1,10 @@
 package opgave03;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class College {
     private String name;
-    private final Set<Student> students = new LinkedHashSet<>();
+    private final Map<Integer,Student> students = new LinkedHashMap<>();
 
 
     public College(String name) {
@@ -15,15 +12,15 @@ public class College {
     }
 
     public void addStudent(Student student) {
-        if (!students.contains(student)) {
-            students.add(student);
+        if (!students.containsValue(student)) {
+            students.put(student.getStudentNo(), student);
             student.setGroup(this);
         }
     }
 
     public void removeStudent(Student student) {
-        if (students.contains(student)) {
-            students.remove(student);
+        if (students.containsValue(student)) {
+            students.remove(student.getStudentNo());
             student.setGroup(null);
         }
     }
@@ -32,17 +29,18 @@ public class College {
         return name;
     }
 
-    public List<Student> getStudents() {
-        return new ArrayList<>(students);
+    public Map<Integer, Student> getStudents() {
+        return students;
     }
 
-    public double calcAvg() {
+    public double calculateAvg() {
         double sum = 0;
         int studentsWithValidGrades = 0;
-        for (Student student : students) {
+        for (Map.Entry<Integer, Student> entry : students.entrySet()) {
+            Student student = entry.getValue();
             double studentAvg = student.getAvgGrade();
             if (studentAvg != 0) {
-                sum += student.getAvgGrade();
+                sum += studentAvg;
                 studentsWithValidGrades++;
             }
         }
@@ -50,11 +48,6 @@ public class College {
     }
 
     public Student findStudent(int studentNo) {
-        for (Student student : students) {
-            if (student.getStudentNo() == studentNo) {
-                return student;
-            }
-        }
-        return null;
+        return students.get(studentNo);
     }
 }
