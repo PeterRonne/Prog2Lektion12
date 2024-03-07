@@ -2,6 +2,10 @@ package opgave02.models;
 
 import java.util.Iterator;
 
+//I models pakken klassen Range der repræsenterer en talrække. Implementer
+//iterator metoden i Range klassen, så den returnerer en RangeIterator.
+
+
 public class Range implements Iterable<Integer>{
     private int from;
     private int to;
@@ -13,6 +17,6 @@ public class Range implements Iterable<Integer>{
 
     @Override
     public Iterator<Integer> iterator() {
-        return null;
+        return new RangeIterator(from, to);
     }
 }
