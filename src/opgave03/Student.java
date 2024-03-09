@@ -1,9 +1,10 @@
 package opgave03;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
-public class Student {
+public class Student implements Comparable<Student> {
     private int studentNo;
     private String name;
     private final List<Integer> grades = new ArrayList<>();
@@ -69,8 +70,12 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" + "StudentNo=" + studentNo + ", name='" + name + '\'' + ", grades=" + grades + '}';
+        return name;
     }
 
+    @Override
+    public int compareTo(Student o) {
+        return Integer.compare(this.studentNo, o.studentNo);
+    }
 
 }
