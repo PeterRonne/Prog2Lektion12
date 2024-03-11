@@ -54,4 +54,18 @@ class StudentTest {
         student.removeGrade(student.getGrades().size() - 1);
     }
 
+    @Test
+    void equals() {
+        //Arrange
+        Student student1 = new Student(1,"Peter2", college);
+        Student student2 = new Student(2,"Simon", college);
+
+        //Act
+        boolean studentEqualsTrue = this.student.equals(student1);
+        boolean studentEqualsFalse = this.student.equals(student2);
+
+        //Assert
+        assertTrue(studentEqualsTrue);
+        assertFalse(studentEqualsFalse);
+    }
 }
